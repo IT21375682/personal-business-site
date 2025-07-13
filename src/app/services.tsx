@@ -107,7 +107,7 @@ export default function ServicesShowcase() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="services-bg relative bg-[url('/image/services-bg02.jpg')] bg-cover bg-center bg-no-repeat py-32"
+      className="services-bg relative bg-[url('/image/services-bg02.jpg')] bg-cover bg-center bg-no-repeat py-14"
     >
       <div className="container mx-auto px-6">
         {/* heading row */}

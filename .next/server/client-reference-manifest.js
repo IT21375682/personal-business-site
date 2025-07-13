@@ -1267,30 +1267,6 @@ self.__RSC_MANIFEST={
         ],
         "async": false
       },
-      "Navbar": {
-        "id": "(sc_client)/./src/components/index.ts",
-        "name": "Navbar",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "Footer": {
-        "id": "(sc_client)/./src/components/index.ts",
-        "name": "Footer",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "Layout": {
-        "id": "(sc_client)/./src/components/index.ts",
-        "name": "Layout",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
       "BackgroundCard": {
         "id": "(sc_client)/./src/components/index.ts",
         "name": "BackgroundCard",
@@ -1318,6 +1294,30 @@ self.__RSC_MANIFEST={
       "FixedPlugin": {
         "id": "(sc_client)/./src/components/index.ts",
         "name": "FixedPlugin",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "Footer": {
+        "id": "(sc_client)/./src/components/index.ts",
+        "name": "Footer",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "Layout": {
+        "id": "(sc_client)/./src/components/index.ts",
+        "name": "Layout",
+        "chunks": [
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      },
+      "Navbar": {
+        "id": "(sc_client)/./src/components/index.ts",
+        "name": "Navbar",
         "chunks": [
           "app/layout:static/chunks/app/layout.js"
         ],
@@ -3784,30 +3784,6 @@ self.__RSC_MANIFEST={
       ],
       "async": false
     },
-    "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#Navbar": {
-      "id": "(app-client)/./src/components/index.ts",
-      "name": "Navbar",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#Footer": {
-      "id": "(app-client)/./src/components/index.ts",
-      "name": "Footer",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#Layout": {
-      "id": "(app-client)/./src/components/index.ts",
-      "name": "Layout",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
     "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#BackgroundCard": {
       "id": "(app-client)/./src/components/index.ts",
       "name": "BackgroundCard",
@@ -3835,6 +3811,30 @@ self.__RSC_MANIFEST={
     "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#FixedPlugin": {
       "id": "(app-client)/./src/components/index.ts",
       "name": "FixedPlugin",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#Footer": {
+      "id": "(app-client)/./src/components/index.ts",
+      "name": "Footer",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#Layout": {
+      "id": "(app-client)/./src/components/index.ts",
+      "name": "Layout",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "E:\\FreelanceProjects\\Project2\\nextjs-tailwind-course-details-page-main\\src\\components\\index.ts#Navbar": {
+      "id": "(app-client)/./src/components/index.ts",
+      "name": "Navbar",
       "chunks": [
         "app/layout:static/chunks/app/layout.js"
       ],
