@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 import { StarIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion";
 
 interface Testimonial {
   name: string;
@@ -35,6 +36,27 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
+/* --------------------------------------------------
+ * Animation variants
+ * --------------------------------------------------*/
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp = {
+  hidden: { y: 40, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 function Stars() {
   return (
     <div className="flex gap-0.5">
@@ -47,12 +69,19 @@ function Stars() {
 
 function TestimonialCard({ name, role, avatar, quote }: Testimonial) {
   return (
-    <div className="flex flex-col gap-6 rounded-2xl bg-white p-8 shadow-md transition-shadow hover:shadow-lg">
+    <motion.div
+      variants={fadeInUp}
+      whileHover={{ y: -6, boxShadow: "0px 12px 24px rgba(0,0,0,0.06)" }}
+      whileTap={{ scale: 0.98 }}
+      className="flex flex-col gap-6 rounded-2xl bg-white p-8 shadow-md"
+    >
       <Typography variant="paragraph" className="opacity-80">
         “{quote}”
       </Typography>
       <div className="flex items-center gap-4">
-         <div>
+        {/* If you eventually add avatars, animate them too */}
+        {/* <Image src={avatar} alt={name} width={56} height={56} className="h-14 w-14 rounded-full object-cover" /> */}
+        <div>
           <Typography variant="h6" color="blue-gray">
             {name}
           </Typography>
@@ -62,14 +91,21 @@ function TestimonialCard({ name, role, avatar, quote }: Testimonial) {
           <Stars />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="bg-gray-50 py-32">
-      <div className="container mx-auto px-6 text-center">
+    <motion.section
+      id="testimonials"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="bg-gray-50 py-32"
+    >
+      <motion.div variants={fadeInUp} className="container mx-auto px-6 text-center">
         <Typography
           variant="small"
           color="blue"
@@ -85,12 +121,15 @@ export default function TestimonialsSection() {
           Leaders who’ve partnered with Shantha say it best
         </Typography>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          variants={container}
+          className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
+        >
           {TESTIMONIALS.map((t) => (
             <TestimonialCard key={t.name} {...t} />
           ))}
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }

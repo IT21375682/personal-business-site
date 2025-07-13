@@ -3,6 +3,33 @@
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion";
+
+/* -------------------------------------------
+ * Animation variants
+ * -----------------------------------------*/
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp = {
+  hidden: { y: 40, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 1 } },
+};
 
 // Key value‑props distilled from Shantha Jayasena’s public profile
 const CHECKS = [
@@ -14,86 +41,163 @@ const CHECKS = [
 
 function CheckItem({ text }: { text: string }) {
   return (
-    <li className="flex items-start gap-2">
+    <motion.li variants={fadeInUp} className="flex items-start gap-2">
       <CheckCircleIcon className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
       <span className="text-blue-gray-700">{text}</span>
-    </li>
+    </motion.li>
   );
 }
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-24">
+    <motion.section
+      id="about"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="relative overflow-hidden bg-white py-24"
+    >
       {/* diamond background pattern (right) */}
-      <span className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-[url('/image/pattern-diamonds.svg')] bg-contain bg-right bg-no-repeat lg:block" />
+      <motion.span
+        variants={fadeIn}
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-[url('/image/pattern-diamonds.svg')] bg-contain bg-right bg-no-repeat lg:block"
+      />
 
       <div className="container mx-auto grid grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
         {/* left – image block */}
-        <div className="relative mx-auto max-w-sm lg:max-w-none">
+        <motion.div
+          variants={fadeInUp}
+          className="relative mx-auto max-w-sm lg:max-w-none"
+        >
           {/* dotted decoration */}
-          <span className="pointer-events-none absolute -left-12 top-20 hidden h-40 w-40 bg-[url('/image/pattern-dots.svg')] bg-contain bg-left-top bg-no-repeat lg:block" />
+          <motion.span
+            variants={fadeIn}
+            className="pointer-events-none absolute -left-12 top-20 hidden h-40 w-40 bg-[url('/image/pattern-dots.svg')] bg-contain bg-left-top bg-no-repeat lg:block"
+          />
 
           {/* main image */}
-          <div className="overflow-hidden rounded-3xl">
-            <Image src="/image/person-sp1.png" alt="Shantha Jayasena presenting on stage" width={480} height={600} className="h-auto w-full object-cover" priority />
-          </div>
+          <motion.div
+            initial={{ scale: 0.92, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            whileHover={{ scale: 1.03 }}
+            className="overflow-hidden rounded-3xl"
+          >
+            <Image
+              src="/image/person-sp1.png"
+              alt="Shantha Jayasena presenting on stage"
+              width={480}
+              height={600}
+              className="h-auto w-full object-cover"
+              priority
+            />
+          </motion.div>
 
-  <div className="absolute -bottom-10 right-0 w-48 sm:w-56 md:w-64">
-            <Image src="/image/team.png" alt="Team discussion facilitated by Shantha" width={320} height={208} className="rounded-2xl object-cover" />
-          </div>
+          {/* secondary image */}
+          <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+            className="absolute -bottom-10 right-0 w-48 sm:w-56 md:w-64"
+          >
+            <Image
+              src="/image/team.png"
+              alt="Team discussion facilitated by Shantha"
+              width={320}
+              height={208}
+              className="rounded-2xl object-cover"
+            />
+          </motion.div>
+
           {/* years badge */}
-          <div className="absolute -bottom-20 left-0 flex w-72 items-center rounded-3xl bg-blue-600 py-6 pl-6 pr-10 text-white shadow-lg">
+          <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+            className="absolute -bottom-20 left-0 flex w-72 items-center rounded-3xl bg-blue-600 py-6 pl-6 pr-10 text-white shadow-lg"
+          >
             <div className="mr-4 text-center">
               <Typography variant="h3" className="leading-none">
                 28
               </Typography>
-              <Typography variant="small" className="-mt-1 font-semibold uppercase tracking-wide">
+              <Typography
+                variant="small"
+                className="-mt-1 font-semibold uppercase tracking-wide"
+              >
                 Years
               </Typography>
             </div>
             <Typography variant="small" className="opacity-90">
               Guiding organisations toward sustainable growth since 1997.
             </Typography>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* right – text block */}
-        <div className="max-w-lg lg:pl-8">
-          <Typography variant="small" color="blue" className="mb-3 font-bold uppercase tracking-widest">
+        <motion.div variants={fadeInUp} className="max-w-lg lg:pl-8">
+          <Typography
+            variant="small"
+            color="blue"
+            className="mb-3 font-bold uppercase tracking-widest"
+          >
             Get to know Shantha
           </Typography>
-          <Typography variant="h3" color="blue-gray" className="mb-6 leading-tight">
+          <Typography
+            variant="h3"
+            color="blue-gray"
+            className="mb-6 leading-tight"
+          >
             28 Years of Turning Ambition into Advantage
           </Typography>
           <Typography variant="paragraph" className="mb-6 opacity-80">
-            From boardrooms in Abu Dhabi to innovation hubs in Colombo, Shantha Jayasena has spent nearly three decades helping companies untangle complexity, optimise operations, and capture new markets. His toolkit blends strategic finance, operational excellence and human‑centred leadership—delivering measurable impact without adding organisational drag.
+            From boardrooms in Abu Dhabi to innovation hubs in Colombo, Shantha
+            Jayasena has spent nearly three decades helping companies untangle
+            complexity, optimise operations, and capture new markets. His
+            toolkit blends strategic finance, operational excellence and
+            human‑centred leadership—delivering measurable impact without adding
+            organisational drag.
           </Typography>
           {/* checklist */}
-          <ul className="mb-6 space-y-3">
+          <motion.ul variants={container} className="mb-6 space-y-3">
             {CHECKS.map((c) => (
               <CheckItem key={c} text={c} />
             ))}
-          </ul>
+          </motion.ul>
           <Typography variant="paragraph" className="mb-8 opacity-80">
-            Today he advises C‑suites and emerging founders alike—designing growth road‑maps, training resilient leaders, and negotiating cross‑border deals that stand the test of time.
+            Today he advises C‑suites and emerging founders alike—designing
+            growth road‑maps, training resilient leaders, and negotiating
+            cross‑border deals that stand the test of time.
           </Typography>
 
           {/* testimonial row */}
-          <div className="flex items-center gap-4">
-            <Image src="/image/person.png" alt="Shantha Jayasena" width={56} height={56} className="h-14 w-14 rounded-full object-cover" />
+          <motion.div
+            variants={fadeInUp}
+            className="flex items-center gap-4"
+          >
+            <Image
+              src="/image/person.png"
+              alt="Shantha Jayasena"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-full object-cover"
+            />
             <div className="flex-1">
-              <Typography variant="small" color="blue-gray" className="font-semibold">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-semibold"
+              >
                 Shantha Jayasena
               </Typography>
               <Typography variant="small" className="opacity-70">
                 Business Solution Consultant
               </Typography>
             </div>
-            {/* <Image src="/image/signature.png" alt="Signature of Shantha Jayasena" width={120} height={40} className="h-10 w-auto" /> */}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

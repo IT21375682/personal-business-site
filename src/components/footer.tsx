@@ -1,6 +1,7 @@
 "use client";
 
 import { Typography, Button, Input } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 
 const MENU = ["Company", "Careers", "Press media", "Our Blog", "Privacy Policy"];
 const QUICK = ["How it’s Work", "Partners", "Testimonials", "Case Studies", "Pricing"];
@@ -14,16 +15,45 @@ const SOCIAL = [
 
 const CURRENT_YEAR = new Date().getFullYear();
 
+/* --------------------------------------------------
+ * Animation variants
+ * --------------------------------------------------*/
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const fadeInUp = {
+  hidden: { y: 40, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 export function Footer() {
   return (
-    <footer className="relative bg-white px-8 pt-24 pb-14 text-blue-gray-900">
+    <motion.footer
+      id="footer"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="relative bg-blue-50 px-8 pt-24 pb-14 text-blue-gray-900"
+    >
       {/* Decorative wave lines */}
-      <span className="pointer-events-none absolute inset-0 -z-10 bg-[url('/image/footer-wave.svg')] bg-cover bg-top" />
+      <motion.span
+        variants={fadeInUp}
+        className="pointer-events-none absolute inset-0 -z-10 bg-[url('/image/footer-wave.svg')] bg-cover bg-top"
+      />
 
-      <div className="container max-w-6xl mx-auto grid gap-16 px-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-2 lg:grid-cols-4">
         {/* 1️⃣ Logo & Contact */}
-        <div className="max-w-sm">
-          <img src="/logo.svg" alt="Gerow logo" width={120} height={40} />
+        <motion.div variants={fadeInUp} className="max-w-sm">
+          {/* <img src="/logo.svg" alt="Gerow logo" width={120} height={40} /> */}
           <Typography variant="small" className="mt-4 mb-6 opacity-80">
             When an unknown printer took a galley of type & scrambled it to make a type specimen book.
           </Typography>
@@ -35,10 +65,10 @@ export function Footer() {
               <i className="fa-regular fa-clock text-blue-600" /> Mon – Sat: 8 am – 5 pm, Sunday: <span className="font-semibold">CLOSED</span>
             </li>
           </ul>
-        </div>
+        </motion.div>
 
         {/* 2️⃣ Menu */}
-        <div>
+        <motion.div variants={fadeInUp}>
           <Typography variant="h6" color="blue-gray" className="mb-4">
             Menu
           </Typography>
@@ -55,10 +85,10 @@ export function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
         {/* 3️⃣ Quick Links */}
-        <div>
+        <motion.div variants={fadeInUp}>
           <Typography variant="h6" color="blue-gray" className="mb-4">
             Quick Links
           </Typography>
@@ -75,17 +105,18 @@ export function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
         {/* 4️⃣ Newsletter */}
-        <div className="max-w-sm">
+        <motion.div variants={fadeInUp} className="max-w-sm">
           <Typography variant="h6" color="blue-gray" className="mb-4">
             Our Newsletter
           </Typography>
           <Typography variant="small" className="mb-4 opacity-80">
             Sign up to Privitar’s weekly newsletter to get the latest updates.
           </Typography>
-          <form
+          <motion.form
+            variants={container}
             onSubmit={(e) => {
               e.preventDefault();
               alert("Thanks for subscribing!");
@@ -94,40 +125,35 @@ export function Footer() {
           >
             {/* @ts-ignore */}
             <Input label="Enter your e-mail" color="gray" type="email" required />
-            <Button
-              type="submit"
-              color="blue"
-              className="w-full lg:w-fit"
-              size="md"
-            >
-              Subscribe
-            </Button>
-          </form>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <Button type="submit" color="blue" className="w-full lg:w-fit" size="md">
+                Subscribe
+              </Button>
+            </motion.div>
+          </motion.form>
 
           <div className="flex gap-3">
             {SOCIAL.map(({ icon, href, label }) => (
-              <a
+              <motion.a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
+                whileHover={{ scale: 1.15 }}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-blue-gray-900 transition-colors hover:bg-blue-600 hover:text-white"
               >
                 <i className={`${icon} text-base`} />
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <Typography
-        color="blue-gray"
-        className="container max-w-6xl mx-auto mt-16 text-center text-sm opacity-60"
-      >
-        © {CURRENT_YEAR} DevNexion. All rights reserved.
-      </Typography>
-    </footer>
+      <motion.div variants={fadeInUp} className="container mx-auto mt-16 max-w-6xl text-center text-sm opacity-60">
+        <Typography color="blue-gray">© {CURRENT_YEAR} DevNexion. All rights reserved.</Typography>
+      </motion.div>
+    </motion.footer>
   );
 }
 

@@ -26,8 +26,8 @@ export default function Campaign() {
       <Service />
       <Overview />
       <InsightsPage/>
-    <Testomonial/>
-    <ContactUs/>
+      <Testomonial/>
+      <ContactUs/>
       {/* <CarouselFeatures />
       <Pricing />
       <OtherCourses />

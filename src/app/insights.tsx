@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Typography, Chip } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 
 interface PostPreview {
   slug: string;
@@ -44,61 +45,97 @@ const POSTS: PostPreview[] = [
   },
 ];
 
+/* --------------------------------------------------
+ * Animation variants
+ * --------------------------------------------------*/
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeInUp = {
+  hidden: { y: 40, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/* --------------------------------------------------
+ * Card component
+ * --------------------------------------------------*/
 function PostCard({ slug, title, date, excerpt, category, cover }: PostPreview) {
   return (
-    <Link
-      href={`${slug}`}
-      className="group overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md"
+    <motion.div
+      variants={fadeInUp}
+      whileHover={{ y: -6, boxShadow: "0px 12px 24px rgba(0,0,0,0.06)" }}
+      whileTap={{ scale: 0.98 }}
     >
-      <div className="relative h-56 w-full overflow-hidden">
-        <Image
-          src={cover}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
-      <div className="p-6">
-        <Chip value={category} color="blue" size="sm" className="mb-3" />
-        <Typography variant="h5" color="blue-gray" className="mb-2 line-clamp-2">
-          {title}
-        </Typography>
-        <Typography variant="small" className="mb-4 opacity-70">
-          {new Date(date).toLocaleDateString("en", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          })}
-        </Typography>
-        <Typography variant="paragraph" className="line-clamp-3 opacity-80">
-          {excerpt}
-        </Typography>
-      </div>
-    </Link>
+      <Link
+        href={slug}
+        className="group block overflow-hidden rounded-xl bg-white shadow-sm focus-visible:outline-none"
+      >
+        <div className="relative h-56 w-full overflow-hidden">
+          <Image
+            src={cover}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+        <div className="p-6">
+          <Chip value={category} color="blue" size="sm" className="mb-3" />
+          <Typography variant="h5" color="blue-gray" className="mb-2 line-clamp-2">
+            {title}
+          </Typography>
+          <Typography variant="small" className="mb-4 opacity-70">
+            {new Date(date).toLocaleDateString("en", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </Typography>
+          <Typography variant="paragraph" className="line-clamp-3 opacity-80">
+            {excerpt}
+          </Typography>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
 
+/* --------------------------------------------------
+ * Page component
+ * --------------------------------------------------*/
 export default function InsightsPage() {
   return (
-    <main className="py-24">
+    <motion.main variants={container} initial="hidden" animate="show">
       {/* hero */}
-      <section className="mb-20 bg-gradient-to-br from-blue-50 to-white py-24 text-center">
+      <motion.section
+        variants={fadeInUp}
+        className="mb-20 bg-gradient-to-br from-blue-50 to-white py-24 text-center"
+      >
         <Typography variant="h2" color="blue-gray" className="mb-4">
           Insights & Resources
         </Typography>
         <Typography variant="lead" className="mx-auto max-w-2xl opacity-80">
           Actionable articles and tools on strategy, leadership and cross‑border growth, curated by Shantha Jayasena.
         </Typography>
-      </section>
+      </motion.section>
 
       {/* posts grid */}
-      <section className="container mx-auto px-6">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+      <motion.section variants={container} className="container mx-auto px-6">
+        <motion.div variants={container} className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
           {POSTS.map((post) => (
             <PostCard key={post.slug} {...post} />
           ))}
-        </div>
-      </section>
-    </main>
+        </motion.div>
+      </motion.section>
+    </motion.main>
   );
 }
