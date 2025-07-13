@@ -9,8 +9,9 @@ const LOGOS = [
   "/image/brands/1.png",
   "/image/brands/2.png",
   "/image/brands/3.png",
-  "/image/brands/1.png",
-  "/image/brands/2.png", // repeat or expand as needed
+  "https://media.licdn.com/dms/image/v2/D5622AQE48t38ZCrduw/feedshare-shrink_800/B56ZWderI4HsAg-/0/1742103819763?e=1755129600&v=beta&t=OX2tNBPHnPvV-GiWAF9zJ5tlCciOArToATf8P4IjxQs",
+  "https://media.licdn.com/dms/image/v2/D5622AQH9o51I1Y6UVg/feedshare-shrink_2048_1536/B56ZUYnLydGoAo-/0/1739874680876?e=1755129600&v=beta&t=Z4uv5fiamA5ZMvawyDk-FLc7Z99qPKQt7SFqfAFbjro",
+  "https://media.licdn.com/dms/image/v2/D5622AQHL5rDF9i9VsA/feedshare-shrink_800/B56ZWLxc0eHEAg-/0/1741806754101?e=1755129600&v=beta&t=EFRdGqoPhSyGq0jnZdmjtwc0Li9GaMNlYtBB4WFbj70" // repeat or expand as needed
 ];
 
 export default function PartnersSection() {

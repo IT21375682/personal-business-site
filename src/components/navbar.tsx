@@ -68,7 +68,7 @@ export function Navbar() {
           <NavItem href="#home">Home</NavItem>
           <NavItem href="#about">About</NavItem>
           <NavItem href="#services">Services</NavItem>
-          <NavItem href="#case-studies">Case&nbsp;Studies</NavItem>
+          <NavItem href="#testimonials">Testimonials</NavItem>
           <NavItem href="#insights">Insights</NavItem>
           <NavItem href="#contact">Contact</NavItem>
         </ul>
