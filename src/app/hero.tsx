@@ -2,7 +2,8 @@
 
 import { Button, Typography } from "@material-tailwind/react";
 import { ChevronRightIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
-import { motion } from "framer-motion";
+import { motion,Variants } from "framer-motion";
+import Link from "next/link";
 
 /**
  * Animation variants
@@ -20,12 +21,15 @@ const container = {
   },
 };
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { y: 40, opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.8,
+      ease: 'easeInOut', // or any other valid easing function
+    },
   },
 };
 
@@ -84,30 +88,22 @@ export default function Hero() {
           {/* CTAs */}
           <div className="flex flex-col items-center gap-5 sm:flex-row">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Button
-                variant="gradient"
-                color="blue"
-                size="lg"
-                className="flex items-center gap-2 shadow-md"
-                as="a"
+              <a
+                className="flex gradient-to-br from-indigo-500 to-blue-600 rounded-md px-4 py-2 items-center gap-2 shadow-md"
                 href="#services"
               >
                 Our Services <ChevronRightIcon className="h-5 w-5" />
-              </Button>
+              </a>
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Button
-                variant="text"
-                color="blue"
-                size="lg"
-                className="flex items-center gap-3"
-                as="a"
-                href="#video-overlay"
-              >
-                <PlayCircleIcon className="h-8 w-8" />
-                <span className="underline">Watch the Video</span>
-              </Button>
+           <Link
+  href="#video-overlay"
+  className="flex items-center gap-3"
+>
+  <PlayCircleIcon className="h-8 w-8" />
+  <span className="underline">Watch the Video</span>
+</Link>
             </motion.div>
           </div>
         </motion.div>
@@ -122,7 +118,6 @@ export default function Hero() {
             alt="Shantha Jayasena, Business Consultant"
             className="relative z-10 w-full object-contain"
             loading="eager"
-            fetchpriority="high"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}

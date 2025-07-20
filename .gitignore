@@ -7,7 +7,7 @@ out/                   # `next export` static output
 .netlify/              # Netlify build cache (if used)
 dist/                  # General build artifacts (e.g. tRPC gen)
 *.tsbuildinfo          # TypeScript incremental build info
-
+.next/    
 # ─────────────────────────────────────────────
 #  DEPENDENCY DIRECTORIES
 # ─────────────────────────────────────────────

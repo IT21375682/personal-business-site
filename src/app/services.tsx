@@ -9,7 +9,7 @@ import {
   LightBulbIcon,
   ShieldCheckIcon,
 } from "@heroicons/react/24/solid";
-import { motion } from "framer-motion";
+import { motion , cubicBezier } from "framer-motion";
 
 interface ServiceCardProps {
   title: string;
@@ -62,7 +62,7 @@ const fadeInUp = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.8, ease: cubicBezier(0.22, 1, 0.36, 1) },
   },
 };
 
@@ -133,22 +133,23 @@ export default function ServicesShowcase() {
             </Typography>
           </div>
 
-          <Button
-            as={Link}
-            href="#services"
-            color="blue"
-            variant="gradient"
-            className="flex items-center gap-2"
+      <Link href="#services">
+ <Button
+  color="blue"
+  variant="gradient"
+  className="flex items-center gap-2"
+  placeholder=""
+  onResize={() => {}}
+  onResizeCapture={() => {}}
+  onPointerEnterCapture={() => {}}
+  onPointerLeaveCapture={() => {}}
+>
+    See All Service
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
           >
-            See All Service
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="h-4 w-4"
-            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -156,6 +157,7 @@ export default function ServicesShowcase() {
               />
             </svg>
           </Button>
+          </Link>
         </motion.div>
 
         {/* cards grid */}

@@ -10,11 +10,23 @@ interface CourseCardProps {
 
 export function CourseCard({ img, title, desc, buttonLabel }: CourseCardProps) {
   return (
-    <Card color="transparent" shadow={false}>
-      <CardHeader floated={false} className="mx-0 mt-0 mb-6 h-48">
+    <Card color="transparent" shadow={false}  placeholder=""
+    onResize={() => {}}
+    onResizeCapture={() => {}}
+    onPointerEnterCapture={() => {}}
+    onPointerLeaveCapture={() => {}}>
+      <CardHeader floated={false} className="mx-0 mt-0 mb-6 h-48" placeholder=""
+    onResize={() => {}}
+    onResizeCapture={() => {}}
+    onPointerEnterCapture={() => {}}
+    onPointerLeaveCapture={() => {}}>
         <Image width={768} height={768} src={img} alt={title} className="h-full w-full object-cover" />
       </CardHeader>
-      <CardBody className="p-0">
+      <CardBody className="p-0"  placeholder=""
+    onResize={() => {}}
+    onResizeCapture={() => {}}
+    onPointerEnterCapture={() => {}}
+    onPointerLeaveCapture={() => {}}>
         <a
           href="#"
           className="text-blue-gray-900 transition-colors hover:text-gray-800"
@@ -26,7 +38,12 @@ export function CourseCard({ img, title, desc, buttonLabel }: CourseCardProps) {
         <Typography className="mb-6 font-normal !text-gray-500">
           {desc}
         </Typography>
-        <Button color="gray" size="sm">
+        <Button color="gray" size="sm"  
+        placeholder=""
+    onResize={() => {}}
+    onResizeCapture={() => {}}
+    onPointerEnterCapture={() => {}}
+    onPointerLeaveCapture={() => {}}>
           {buttonLabel}
         </Button>
       </CardBody>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Typography, Button, Input } from "@material-tailwind/react";
-import { motion } from "framer-motion";
+import { motion , cubicBezier} from "framer-motion";
 
 const MENU = ["Company", "Careers", "Press media", "Our Blog", "Privacy Policy"];
 const QUICK = ["How it’s Work", "Partners", "Testimonials", "Case Studies", "Pricing"];
@@ -21,7 +21,10 @@ const CURRENT_YEAR = new Date().getFullYear();
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.15 },
+    transition: {
+      staggerChildren: 0.15,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
   },
 };
 
@@ -30,7 +33,10 @@ const fadeInUp = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.8,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
   },
 };
 
@@ -126,9 +132,9 @@ export function Footer() {
             {/* @ts-ignore */}
             <Input label="Enter your e-mail" color="gray" type="email" required />
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Button type="submit" color="blue" className="w-full lg:w-fit" size="md">
+              <button type="submit" color="blue" className="w-full lg:w-fit bg-blue-500">
                 Subscribe
-              </Button>
+              </button>
             </motion.div>
           </motion.form>
 

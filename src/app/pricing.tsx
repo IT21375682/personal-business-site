@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card, CardBody, Button, Typography } from "@material-tailwind/react";
+import { Card, CardBody, Button, Typography, ButtonProps  } from "@material-tailwind/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 
@@ -24,8 +24,23 @@ export function Pricing() {
             will send you a full refund.
           </Typography>
         </div>
-        <Card className="px-6 pb-5">
-          <CardBody>
+        <Card 
+        className="px-6 pb-5"
+    placeholder=""
+    onResize={() => {}}
+    onResizeCapture={() => {}}
+    onPointerEnterCapture={() => {}}
+    onPointerLeaveCapture={() => {}}
+        >
+       <CardBody
+        placeholder=""
+    onResize={() => {}}
+    onResizeCapture={() => {}}
+    onPointerEnterCapture={() => {}}
+    onPointerLeaveCapture={() => {}}
+       >
+      
+  
             <Typography variant="h3" color="blue-gray">
               React Course Membership
             </Typography>
@@ -69,9 +84,9 @@ export function Pricing() {
                 <Typography variant="h1" color="blue-gray">
                   $399
                 </Typography>
-                <Button color="gray" className="my-3">
+                <button color="gray" className="my-3">
                   get access
-                </Button>
+                </button>
                 <Typography
                   variant="small"
                   className="font-normal !text-gray-500"
@@ -80,7 +95,9 @@ export function Pricing() {
                 </Typography>
               </div>
             </div>
-          </CardBody>
+        
+        </CardBody>
+      
         </Card>
       </section>
     </div>

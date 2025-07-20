@@ -5,9 +5,9 @@ import { Navbar, Footer } from "@/components";
 import Hero from "./hero";
 import OnlineCourse from "./online-course";
 import WhyChooseUs from "./why-choose-us";
-import CarouselFeatures from "./carousel-features";
-import Pricing from "./pricing";
-import OtherCourses from "./other-courses";
+// import CarouselFeatures from "./carousel-features";
+// import Pricing from "./pricing";
+// import OtherCourses from "./other-courses";
 import Partners from "./partner";
 import Service from "./services";
 import Overview from "./OverviewSection"

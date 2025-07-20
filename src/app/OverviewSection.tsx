@@ -5,7 +5,7 @@ import { Typography } from "@material-tailwind/react";
 import { ChartBarSquareIcon, TrophyIcon, StarIcon } from "@heroicons/react/24/solid";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion,cubicBezier } from "framer-motion";
 
 interface Stat {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -25,7 +25,10 @@ const STATS: Stat[] = [
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.15 },
+    transition: {
+      staggerChildren: 0.15,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
   },
 };
 
@@ -34,7 +37,10 @@ const fadeInUp = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.8,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
   },
 };
 

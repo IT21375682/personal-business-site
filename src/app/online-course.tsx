@@ -6,7 +6,7 @@ import {
   BanknotesIcon,
   ClipboardDocumentCheckIcon,
 } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import { motion,cubicBezier } from "framer-motion";
 
 interface Service {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -52,7 +52,10 @@ const fadeInUp = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { 
+      duration: 0.7, 
+      ease: cubicBezier(0.22, 1, 0.36, 1) 
+    },
   },
 };
 

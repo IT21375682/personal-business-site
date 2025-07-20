@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { motion } from "framer-motion";
+import { motion, cubicBezier } from "framer-motion";
 
 /* -------------------------------------------
  * Animation variants
@@ -13,6 +13,7 @@ const container = {
   show: {
     transition: {
       staggerChildren: 0.15,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
     },
   },
 };
@@ -22,10 +23,12 @@ const fadeInUp = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.8,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
   },
 };
-
 const fadeIn = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { duration: 1 } },
