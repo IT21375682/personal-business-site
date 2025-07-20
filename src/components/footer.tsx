@@ -157,7 +157,7 @@ export function Footer() {
       </div>
 
       <motion.div variants={fadeInUp} className="container mx-auto mt-16 max-w-6xl text-center text-sm opacity-60">
-        <Typography color="blue-gray">© {CURRENT_YEAR} DevNexion. All rights reserved.</Typography>
+        <Typography color="blue-gray">© {CURRENT_YEAR} OdhinTech. All rights reserved.</Typography>
       </motion.div>
     </motion.footer>
   );

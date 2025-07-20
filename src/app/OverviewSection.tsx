@@ -96,43 +96,55 @@ export default function OverviewSection() {
 
       <div className="container mx-auto grid grid-cols-1 items-center gap-24 px-6 lg:grid-cols-2">
         {/* image collage */}
-        <motion.div
-          variants={fadeInUp}
-          className="relative mx-auto w-full max-w-md lg:max-w-none"
-        >
-          <motion.div
-            initial={{ scale: 0.92, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            whileHover={{ scale: 1.03 }}
-          >
-            <Image
-              src="/image/person.png"
-              alt="Consultant overview"
-              width={500}
-              height={620}
-              className="rounded-3xl object-cover"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-            className="absolute -bottom-10 right-0 w-64 sm:w-64 md:w-72 lg:-right-16"
-          >
-            <Image
-              src="/image/team.png"
-              alt="Team brainstorming"
-              width={260}
-              height={320}
-              className="rounded-2xl object-cover"
-            />
-          </motion.div>
-          {/* center icon (optional, animate someday) */}
-          {/* <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg">
-            <ChartBarSquareIcon className="h-8 w-8" />
-          </span> */}
-        </motion.div>
+       <motion.div
+  variants={fadeInUp}
+  className="relative mx-auto w-full max-w-md lg:max-w-none"
+>
+  {/* main portrait */}
+  <motion.div
+    initial={{ scale: 0.92, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+    whileHover={{ scale: 1.03 }}
+  >
+    <Image
+      src="/image/person.png"
+      alt="Consultant overview"
+      width={500}
+      height={620}
+      className="rounded-3xl object-cover"
+      priority
+    />
+  </motion.div>
+
+  {/* overlay — mobile = centred / below, md+ = bottom-right */}
+  <motion.div
+    initial={{ y: 40, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+    className="
+      absolute
+      -bottom-8        /* slightly closer on small screens */
+      left-1/2
+      -translate-x-1/2 /* centre horizontally on mobile */
+      w-48             /* 12rem */
+      sm:-bottom-10    /* original offset for ≥640 px */
+      sm:w-56          /* 14rem */
+      md:right-0 md:left-auto md:translate-x-0
+      md:w-64          /* 16rem */
+      lg:-right-16
+    "
+  >
+    <Image
+      src="/image/team.png"
+      alt="Team brainstorming"
+      width={260}
+      height={200}
+      className="rounded-2xl object-cover"
+    />
+  </motion.div>
+</motion.div>
+
 
         {/* content */}
         <motion.div variants={fadeInUp} className="max-w-lg" ref={ref}>

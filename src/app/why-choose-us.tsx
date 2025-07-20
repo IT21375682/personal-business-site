@@ -138,7 +138,7 @@ export function AboutSection() {
         </motion.div>
 
         {/* right – text block */}
-        <motion.div variants={fadeInUp} className="max-w-lg lg:pl-8">
+        <motion.div variants={fadeInUp} className="max-w-lg pt-5 lg:pl-8">
           <Typography
             variant="small"
             color="blue"
