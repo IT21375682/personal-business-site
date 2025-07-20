@@ -1,3 +1,6 @@
+/* --------------------------------------------------
+ * ContactSection.tsx
+ * --------------------------------------------------*/
 "use client";
 
 import { useState } from "react";
@@ -31,8 +34,23 @@ const fadeInUp: Variants = {
   },
 };
 
+/* --------------------------------------------------
+ * Component
+ * --------------------------------------------------*/
+interface FormState {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+}
+
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState<FormState>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -40,8 +58,8 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Thank you, ${form.name}! Your message has been sent.`);
-    setForm({ name: "", email: "", message: "" });
+    alert(`Thank you, ${form.firstName}! Your message has been sent.`);
+    setForm({ firstName: "", lastName: "", email: "", message: "" });
   };
 
   return (
@@ -54,7 +72,9 @@ export default function ContactSection() {
       className="bg-white py-32"
     >
       <div className="container mx-auto grid grid-cols-1 gap-16 px-6 lg:grid-cols-2">
-        {/* left – info */}
+        {/* ------------------------------------------- */}
+        {/* Left column – contact info                  */}
+        {/* ------------------------------------------- */}
         <motion.div variants={fadeInUp} className="max-w-lg">
           <Typography
             as="p"
@@ -72,11 +92,7 @@ export default function ContactSection() {
           >
             Let’s turn your next big idea into reality
           </Typography>
-          <Typography
-            as="p"
-            variant="lead"
-            className="mb-8 opacity-80"
-          >
+          <Typography as="p" variant="lead" className="mb-8 opacity-80">
             Reach out to discuss your project, request a proposal, or simply say
             hello. We usually respond within one business day.
           </Typography>
@@ -96,15 +112,12 @@ export default function ContactSection() {
                 >
                   Phone / WhatsApp
                 </Typography>
-                <Typography
-                  as="p"
-                  variant="small"
-                  className="opacity-80"
-                >
+                <Typography as="p" variant="small" className="opacity-80">
                   +971 5 XXX XX 8430
                 </Typography>
               </div>
             </motion.li>
+
             {/* email */}
             <motion.li variants={fadeInUp} className="flex items-start gap-4">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
@@ -119,15 +132,12 @@ export default function ContactSection() {
                 >
                   Email
                 </Typography>
-                <Typography
-                  as="p"
-                  variant="small"
-                  className="opacity-80"
-                >
+                <Typography as="p" variant="small" className="opacity-80">
                   connect@shantha-consult.com
                 </Typography>
               </div>
             </motion.li>
+
             {/* offices */}
             <motion.li variants={fadeInUp} className="flex items-start gap-4">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
@@ -142,11 +152,7 @@ export default function ContactSection() {
                 >
                   Offices
                 </Typography>
-                <Typography
-                  as="p"
-                  variant="small"
-                  className="opacity-80"
-                >
+                <Typography as="p" variant="small" className="opacity-80">
                   Abu Dhabi, UAE • Colombo, Sri Lanka
                 </Typography>
               </div>
@@ -154,72 +160,70 @@ export default function ContactSection() {
           </motion.ul>
         </motion.div>
 
-        {/* right – form */}
-        <motion.form
-          variants={fadeInUp}
-          onSubmit={handleSubmit}
-          className="rounded-3xl bg-gray-50 p-8 shadow-sm lg:p-12"
-        >
-          <div className="mb-6 grid gap-6 sm:grid-cols-2">
-           <Input
-  type="text"
-  label="Full Name"
-  name="name"
-  value={form.name}
-  onChange={handleChange}
-  required
-  color="blue"
-  onResize={() => {}}
-  onResizeCapture={() => {}}
-  onPointerEnterCapture={() => {}}
-  onPointerLeaveCapture={() => {}}
-  crossOrigin=""
-/>
-           <Input
-  type="text"
-  label="Full Name"
-  name="name"
-  value={form.name}
-  onChange={handleChange}
-  required
-  color="blue"
-  onResize={() => {}}
-  onResizeCapture={() => {}}
-  onPointerEnterCapture={() => {}}
-  onPointerLeaveCapture={() => {}}
-  crossOrigin=""
-/>
-          </div>
-          <Input
-  type="text"
-  label="Full Name"
-  name="name"
-  value={form.name}
-  onChange={handleChange}
-  required
-  color="blue"
-  onResize={() => {}}
-  onResizeCapture={() => {}}
-  onPointerEnterCapture={() => {}}
-  onPointerLeaveCapture={() => {}}
-  crossOrigin=""
-/>
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-         <Button
-  type="submit"
-  color="blue"
-  size="lg"
-  className="w-full"
-  placeholder=""
-  onResize={() => {}}
-  onResizeCapture={() => {}}
-  onPointerEnterCapture={() => {}}
-  onPointerLeaveCapture={() => {}}
+        {/* ------------------------------------------- */}
+        {/* Right column – contact form                 */}
+        {/* ------------------------------------------- */}
+    <motion.form
+  variants={fadeInUp}
+  onSubmit={handleSubmit}
+  /* 1️⃣  flex-column + space-y-6   */
+  className="flex flex-col space-y-6 rounded-3xl bg-gray-50 p-8 shadow-sm lg:p-12"
 >
-  Send Message
-</Button>
-          </motion.div>
-        </motion.form>
+  {/* First + Last name */}
+  <div className="grid gap-6 sm:grid-cols-2">
+    <Input
+      type="text"
+      label="First Name"
+      name="firstName"
+      value={form.firstName}
+      onChange={handleChange}
+      required
+      color="blue"
+      crossOrigin=""
+    />
+    <Input
+      type="text"
+      label="Last Name"
+      name="lastName"
+      value={form.lastName}
+      onChange={handleChange}
+      required
+      color="blue"
+      crossOrigin=""
+    />
+  </div>
+
+  {/* Email */}
+  <Input
+    type="email"
+    label="Email Address"
+    name="email"
+    value={form.email}
+    onChange={handleChange}
+    required
+    color="blue"
+    crossOrigin=""
+  />
+
+  {/* Message */}
+  <Textarea
+    label="Your Message"
+    name="message"
+    value={form.message}
+    onChange={handleChange}
+    rows={5}
+    required
+    color="blue"
+  />
+
+  {/* Submit */}
+  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+    <Button placeholder="" type="submit" color="blue" size="lg" className="w-full">
+      Send Message
+    </Button>
+  </motion.div>
+</motion.form>
+
       </div>
     </motion.section>
   );

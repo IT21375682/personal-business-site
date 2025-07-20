@@ -132,7 +132,7 @@ export function Footer() {
             {/* @ts-ignore */}
             <Input label="Enter your e-mail" color="gray" type="email" required />
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <button type="submit" color="blue" className="w-full lg:w-fit bg-blue-500">
+              <button type="submit" color="blue" className="w-full lg:w-fit bg-blue-400 p-1 rounded-md shadow-md">
                 Subscribe
               </button>
             </motion.div>
